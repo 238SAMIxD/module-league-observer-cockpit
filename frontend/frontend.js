@@ -1,6 +1,6 @@
 const updateUi = async () => {
   const server = await window.constants.getWebServerPort()
-  const location = `http://${server}/pages/op-module-league-caster-cockpit/cockpit`
+  const location = `http://${server}/pages/op-module-league-observer-cockpit/cockpit`
 
   const apiKey = await window.constants.getApiKey()
 

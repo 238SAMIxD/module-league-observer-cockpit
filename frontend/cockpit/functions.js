@@ -22,7 +22,7 @@ function hidePlatings() {
 function mapZoomIn() {
   LPTE.emit({
     meta: {
-      namespace: 'module-league-caster-cockpit',
+      namespace: 'module-league-observer-cockpit',
       type: 'MapZoomIn',
       version: 1
     }
@@ -31,7 +31,7 @@ function mapZoomIn() {
 function mapZoomOut() {
   LPTE.emit({
     meta: {
-      namespace: 'module-league-caster-cockpit',
+      namespace: 'module-league-observer-cockpit',
       type: 'MapZoomOut',
       version: 1
     }
@@ -75,7 +75,7 @@ function showGoldGraph() {
 function showGold() {
   LPTE.emit({
     meta: {
-      namespace: 'module-league-caster-cockpit',
+      namespace: 'module-league-observer-cockpit',
       type: 'show-gold',
       version: 1
     }

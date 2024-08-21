@@ -1,117 +1,114 @@
-.module-league-caster-cockpit {
+.module-league-observer-cockpit {
   padding: 1rem;
 }
 
-#player {
-  width: 100%;
-  display: flex;
-  margin-top: 1.5rem;
-  gap: 1rem;
-}
-
-.team {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-}
-
-#game-control {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  padding: 0 1rem;
-}
-
-#show-gold,
-#show-gold-graph {
-  width: 50%;
-}
-
-#map-zoom-in,
-#map-zoom-out {
-  width: 50%;
-}
-
-#bluePlayers,
-#redPlayers {
-  padding: 0 !important;
-}
-
-.playerRow {
-  width: 100%;
-  display: flex;
-  border: 1px solid var(--gray-dark);
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  text-decoration: none;
-  flex-wrap: wrap;
-}
-
-.playerRow:last-of-type {
-  margin-bottom: 1rem;
-}
-
-.red .playerRow {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-
-.playerIcon {
-  width: 64px;
-  object-fit: contain;
-}
-
-.playerInfo {
-  width: 35%;
+h2 {
+  font-weight: bold;
 }
 
 h3 {
-  margin-bottom: 5px;
+  margin: 1rem;
 }
 
-p {
-  margin: 0 !important;
+.events {
+  text-align: center;
 }
 
-.eloInfo {
+.teams {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+}
+
+.teams label {
+  --outline-width: 1px;
+  --border-radius: 10px;
+  padding: 0.75rem;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: calc(-1 * var(--outline-width)) calc(-1 * var(--outline-width)) 0 #000,
+    var(--outline-width) calc(-1 * var(--outline-width)) 0 #000,
+    calc(-1 * var(--outline-width)) var(--outline-width) 0 #000,
+    var(--outline-width) var(--outline-width) 0 #000;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.order {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border: 1px solid #000;
+}
+
+.chaos {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  border: 1px solid #000;
+}
+
+#blue:checked ~ .order {
+  background-color: var(--blue-team-dark);
+}
+
+#red:checked ~ .chaos {
+  background-color: var(--red-team-dark);
+}
+
+.teams input {
+  display: none;
+}
+
+.dragons {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center !important;
-  width: 50px;
+  gap: 2rem;
+  width: fit-content;
+  margin: auto;
 }
 
-.eloIcon {
-  width: 35px;
-  object-fit: contain;
+.elemental, .void {
+  display: grid;
+  grid-template-columns: repeat(3, 128px);
+  gap: 2rem;
+  width: fit-content;
+  margin: auto;
 }
 
-.multiLinkBtn {
-  margin-top: auto;
-  justify-self: baseline;
+.events button {
+  max-width: 128px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 0 2px #e0e0e0;
+  transition: all 0.2s ease-in-out;
+  position: relative;
 }
 
-.game-data {
-  width: 100%;
-  height: 35px;
-  gap: 10px;
-  background: var(--gray);
+.events button:hover {
+  filter: brightness(0.75);
+  box-shadow: 0 0 0 3px #a0a0a0;
+}
+
+img {
+  border-radius: inherit;
+}
+
+.title {
+  position: absolute;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  align-items: end;
+  inset: 0;
+  top: 75%;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 0 0 20px 20px;
 }
 
-.championIcon {
-  width: 30px;
-  height: 30px;
-}
-
-.spellIcon,
-.item {
-  width: 25px;
-  height: 25px;
-}
-
-.items {
-  margin-left: 20px;
+@media (max-width: 1024px) {
+  .elemental, .void {
+    grid-template-columns: repeat(2, 128px);
+  }
 }
