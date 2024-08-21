@@ -11,7 +11,7 @@ module.exports = async (ctx: PluginContext) => {
     },
     pages: [
       {
-        name: 'LoL: Caster Cockpit',
+        name: 'LoL: Observer Cockpit',
         frontend: 'frontend',
         id: `op-${namespace}`
       }

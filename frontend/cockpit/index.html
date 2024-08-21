@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Caster Cockpit | League</title>
+    <title>Observer Cockpit | League</title>
     <script src="/static/main-bundle.js"></script>
     <link
       rel="stylesheet"
@@ -15,286 +15,67 @@
     <link rel="stylesheet" href="cockpit.css" />
     <link rel="stylesheet" href="/pages/op-plugin-theming/active/index.css" />
   </head>
-  <body class="module-league-caster-cockpit">
-    <h1>League Caster Cockpit</h1>
+  <body class="module-league-observer-cockpit">
+    <h1>League Observer Cockpit</h1>
 
-    <div id="player">
-      <div class="team blue">
-        <ul id="bluePlayers"></ul>
-        <a
-          href=""
-          target="_blank"
-          class="multiLinkBtn btn btn-primary btn-block"
-          id="blueMultiLinkBtn"
-          >OP.GG Overview</a
-        >
+    <div class="events">
+      <h2>Events</h2>
+      <h3>Team</h3>
+      <div class="teams">
+        <input id="blue" name="team" type="radio" value="100" checked>
+        <input id="red" name="team" type="radio" value="200">
+        <label for="blue" class="btn btn-secondary order">Blue</label>
+        <label for="red" class="btn btn-secondary chaos">Red</label>
       </div>
-      <div id="game-control">
-        <!--- Platings ----->
-        <div class="d-flex">
-          <div class="btn-group w-50">
-            <button
-              type="button"
-              class="btn btn-secondary w-50"
-              onclick="showPlatings()"
-            >
-              Show Platings
+      <div class="events">
+        <h3>Dragons</h3>
+        <div class="dragons">
+          <div class="elemental">
+            <button class="infernal" onclick="triggerEvent('Infernal')">
+              <img src="img/infernal.png" alt="Infernal" />
+            <span class="title">Infernal</span>
             </button>
-            <button
-              type="button"
-              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
+            <button class="ocean" onclick="triggerEvent('Ocean')">
+              <img src="img/ocean.png" alt="Ocean" />
+            <span class="title">Ocean</span>
             </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-in-game',
-                  'show-platings'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
+            <button class="mountain" onclick="triggerEvent('Mountain')">
+              <img src="img/mountain.png" alt="Mountain" />
+            <span class="title">Mountain</span>
+            </button>
+            <button class="cloud" onclick="triggerEvent('Cloud')">
+              <img src="img/cloud.png" alt="Cloud" />
+            <span class="title">Cloud</span>
+            </button>
+            <button class="hextech" onclick="triggerEvent('Hextech')">
+              <img src="img/hextech.png" alt="Hextech" />
+            <span class="title">Hextech</span>
+            </button>
+            <button class="chemtech" onclick="triggerEvent('Chemtech')">
+              <img src="img/chemtech.png" alt="Chemtech" />
+              <span class="title">Chemtech</span>
+            </button>
           </div>
-          <div class="btn-group w-50">
-            <button
-              type="button"
-              class="btn btn-secondary btn-block"
-              onclick="hidePlatings()"
-            >
-              Hide Platings
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-in-game',
-                  'hide-platings'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
+          <button class="elder" onclick="triggerEvent('Elder')">
+            <img src="img/elder.png" alt="Elder" />
+            <span class="title">Elder</span>
+          </button>
         </div>
-        <!--- LeaderBoards ----->
-        <div class="d-flex mt-auto mb-2">
-          <div class="btn-group">
-            <button type="button" class="btn btn-warning" onclick="showLeaderBoard('gold')">
-              Show Gold LB
-            </button>
-            <button
-              type="button"
-              class="btn btn-warning dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-in-game',
-                  'show-leader-board',
-                  {
-                    'leaderboard': 'gold'
-                  }
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
-          <div class="btn-group">
-            <button type="button" class="btn btn-info btn-block" onclick="showLeaderBoard('xp')">
-              Show Level LB
-            </button>
-            <button
-              type="button"
-              class="btn btn-info dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-in-game',
-                  'show-leader-board',
-                  {
-                    'leaderboard': 'xp'
-                  }
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary" onclick="hideLeaderBoard()">
-              Hide LB
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-in-game',
-                  'hide-leader-board'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
+        <h3>Void creatures</h3>
+        <div class="void">
+          <button class="voidgrubs" onclick="triggerEvent('Voidgrubs')">
+            <img src="img/voidgrubs.png" alt="Voidgrubs" />
+            <span class="title">Voidgrubs</span>
+          </button>
+          <button class="herald" onclick="triggerEvent('Herald')">
+            <img src="img/herald.png" alt="Herald" />
+            <span class="title">Herald</span>
+          </button>
+          <button class="baron" onclick="triggerEvent('Baron')">
+            <img src="img/baron.png" alt="Baron" />
+            <span class="title">Baron</span>
+          </button>
         </div>
-        <!--- Gold ----->
-        <div class="d-flex mb-2">
-          <div id="show-gold" class="btn-group">
-            <button type="button" class="btn btn-warning" onclick="showGold()">
-              Toggle Gold
-            </button>
-            <button
-              type="button"
-              class="btn btn-warning dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-caster-cockpit',
-                  'show-gold'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
-          <div id="show-gold-graph" class="btn-group">
-            <button type="button" class="btn btn-warning" onclick="showGoldGraph()">
-              Toggle Gold-Graph
-            </button>
-            <button
-              type="button"
-              class="btn btn-warning dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-league-in-game',
-                  'show-gold-graph'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
-        </div>
-        <!--- MapZoom ----->
-        <div class="d-flex">
-          <div id="map-zoom-in" class="btn-group">
-            <button type="button" class="btn btn-success" onclick="mapZoomIn()">
-              Zoom In Map
-            </button>
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-vmix',
-                  'MapZoomIn'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
-          <div id="map-zoom-out" class="btn-group">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              onclick="mapZoomOut()"
-            >
-              Zoom Out Map
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="dropdown-item"
-                onclick="window.getActionLink(
-                  'module-vmix',
-                  'MapZoomOut'
-                )"
-              >
-                Copy Action-Link
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="team red">
-        <ul id="redPlayers"></ul>
-        <a
-          href=""
-          target="_blank"
-          class="multiLinkBtn btn btn-primary btn-block"
-          id="redMultiLinkBtn"
-          >OP.GG Overview</a
-        >
       </div>
     </div>
 

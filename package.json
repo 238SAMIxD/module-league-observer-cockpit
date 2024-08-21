@@ -1,8 +1,8 @@
 {
-  "name": "module-league-caster-cockpit",
-  "version": "1.1.0",
-  "description": "Module that provides information about the current lobby and game for casters",
-  "author": "RCVolus",
+  "name": "module-league-observer-cockpit",
+  "version": "1.0.0",
+  "description": "Module that provides dashboard to manually trigger in game events for observers",
+  "author": "238SAMIxD",
   "license": "MIT",
   "toolkit": {
     "modes": [
