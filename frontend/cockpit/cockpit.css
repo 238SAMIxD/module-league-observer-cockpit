@@ -15,12 +15,18 @@ h3 {
 }
 
 .teams {
-  display: flex;
+  position: sticky;
+  top: 10%;
+  left: 5%;
   width: fit-content;
-  margin: auto;
 }
 
-.teams label {
+.picker {
+  display: flex;
+  width: fit-content;
+}
+
+.picker label {
   --outline-width: 1px;
   --border-radius: 10px;
   padding: 0.75rem;
@@ -52,7 +58,7 @@ h3 {
   background-color: var(--red-team-dark);
 }
 
-.teams input {
+.picker input {
   display: none;
 }
 
@@ -66,7 +72,7 @@ h3 {
   margin: auto;
 }
 
-.elemental, .void {
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 128px);
   gap: 2rem;
@@ -108,7 +114,7 @@ img {
 }
 
 @media (max-width: 1024px) {
-  .elemental, .void {
+  .grid {
     grid-template-columns: repeat(2, 128px);
   }
 }
