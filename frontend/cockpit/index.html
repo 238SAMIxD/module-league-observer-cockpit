@@ -19,18 +19,20 @@
     <h1>League Observer Cockpit</h1>
 
     <div class="events">
-      <h2>Events</h2>
-      <h3>Team</h3>
       <div class="teams">
-        <input id="blue" name="team" type="radio" value="100" checked>
-        <input id="red" name="team" type="radio" value="200">
-        <label for="blue" class="btn btn-secondary order">Blue</label>
-        <label for="red" class="btn btn-secondary chaos">Red</label>
+        <h3>Team</h3>
+        <div class="picker">
+          <input id="blue" name="team" type="radio" value="100" checked>
+          <input id="red" name="team" type="radio" value="200">
+          <label for="blue" class="btn btn-secondary order">Blue</label>
+          <label for="red" class="btn btn-secondary chaos">Red</label>
+        </div>
       </div>
+      <h2>Events</h2>
       <div class="events">
         <h3>Dragons</h3>
         <div class="dragons">
-          <div class="elemental">
+          <div class="grid elemental">
             <button class="infernal" onclick="triggerEvent('Infernal')">
               <img src="img/infernal.png" alt="Infernal" />
             <span class="title">Infernal</span>
@@ -62,7 +64,7 @@
           </button>
         </div>
         <h3>Void creatures</h3>
-        <div class="void">
+        <div class="grid void">
           <button class="voidgrubs" onclick="triggerEvent('Voidgrubs')">
             <img src="img/voidgrubs.png" alt="Voidgrubs" />
             <span class="title">Voidgrubs</span>
