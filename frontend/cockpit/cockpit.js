@@ -1,5 +1,8 @@
-document.addEventListener('keydown', (e) => {
-  if (e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+document.addEventListener("keydown", (e) => {
+  if (
+    e.target.getAttribute("role") === "button" &&
+    (e.key === "Enter" || e.key === " ")
+  ) {
     e.preventDefault();
     e.target.click();
   }
@@ -12,15 +15,15 @@ function getTeam() {
 
 function triggerEvent(event, count = undefined) {
   const team = getTeam();
-  
+
   const payload = {
     meta: {
-      namespace: 'module-league-in-game',
-      type: 'test-event',
-      version: 1
+      namespace: "module-league-in-game",
+      type: "test-event",
+      version: 1,
     },
     team,
-    event
+    event,
   };
 
   if (count !== undefined) {
@@ -31,22 +34,24 @@ function triggerEvent(event, count = undefined) {
 }
 
 LPTE.onready(async () => {
-  const onAirBadge = document.querySelector('.status.on-air');
-  const blueTeamLabel = document.querySelector('.blue-team .label');
-  const redTeamLabel = document.querySelector('.red-team .label');
+  const onAirBadge = document.querySelector(".status.on-air");
+  const blueTeamLabel = document.querySelector(".blue-team .label");
+  const redTeamLabel = document.querySelector(".red-team .label");
 
   const updateTournament = (name) => {
     onAirBadge.textContent =
-      name && name.trim() !== ''
+      name && name.trim() !== ""
         ? `TOURNAMENT: ${name.toUpperCase()}`
-        : 'TOURNAMENT: WAITING...';
+        : "TOURNAMENT: WAITING...";
   };
 
   const updateTeams = (blueTeam, redTeam) => {
-    blueTeamLabel.textContent =
-      blueTeam?.name?.trim() ? blueTeam.name.toUpperCase() : 'BLUE TEAM';
-    redTeamLabel.textContent =
-      redTeam?.name?.trim() ? redTeam.name.toUpperCase() : 'RED TEAM';
+    blueTeamLabel.textContent = blueTeam?.name?.trim()
+      ? blueTeam.name.toUpperCase()
+      : "BLUE TEAM";
+    redTeamLabel.textContent = redTeam?.name?.trim()
+      ? redTeam.name.toUpperCase()
+      : "RED TEAM";
   };
 
   const handleTeamsData = (data) => {
@@ -68,16 +73,16 @@ LPTE.onready(async () => {
   try {
     const teamsData = await LPTE.request({
       meta: {
-        namespace: 'module-teams',
-        type: 'request-current',
-        version: 1
-      }
+        namespace: "module-teams",
+        type: "request-current",
+        version: 1,
+      },
     });
 
     handleTeamsData(teamsData);
   } catch (err) {
-    console.debug('Failed to load initial module-teams state:', err);
+    console.debug("Failed to load initial module-teams state:", err);
   }
 
-  LPTE.on('module-teams', 'update', handleTeamsData);
+  LPTE.on("module-teams", "update", handleTeamsData);
 });

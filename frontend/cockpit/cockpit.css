@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   padding: 0;
@@ -8,7 +7,9 @@ body {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -16,15 +17,35 @@ a {
   text-decoration: none;
 }
 
-
-.gold { color: #eab308; }
-.purple { color: #a855f7; }
-.green { color: #22c55e; }
-.class-green { color: #22c55e; font-size: 0.75rem; font-weight: 700; display: block; margin-bottom: 0.25rem;}
-.class-gold { color: #eab308; font-size: 0.75rem; font-weight: 700; display: block; margin-bottom: 0.25rem;}
-.val-blue { color: #3b82f6; }
-.val-green { color: #22c55e; }
-
+.gold {
+  color: #eab308;
+}
+.purple {
+  color: #a855f7;
+}
+.green {
+  color: #22c55e;
+}
+.class-green {
+  color: #22c55e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.class-gold {
+  color: #eab308;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.val-blue {
+  color: #3b82f6;
+}
+.val-green {
+  color: #22c55e;
+}
 
 .top-nav {
   display: flex;
@@ -83,7 +104,6 @@ a {
   color: #22c55e;
 }
 
-
 .team-targeting {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -106,7 +126,10 @@ a {
   border-radius: 8px;
   gap: 0.5rem;
   cursor: pointer;
-  transition: filter 0.2s, background-color 0.2s, transform 0.2s;
+  transition:
+    filter 0.2s,
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 input[name="team"]:not(:checked) + .team-card {
@@ -136,11 +159,13 @@ input[name="team"] + .team-card:hover {
   font-size: 2rem;
 }
 
-.blue-team .icon, .blue-team .label {
+.blue-team .icon,
+.blue-team .label {
   color: #3b82f6;
 }
 
-.red-team .icon, .red-team .label {
+.red-team .icon,
+.red-team .label {
   color: #ef4444;
 }
 
@@ -148,7 +173,6 @@ input[name="team"] + .team-card:hover {
   font-size: 1.25rem;
   font-weight: 800;
 }
-
 
 .section {
   margin: 2rem 2rem;
@@ -181,16 +205,23 @@ input[name="team"] + .team-card:hover {
   gap: 1rem;
 }
 
-.grid-6 { grid-template-columns: repeat(6, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-
+.grid-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
 
 .card {
   background-color: #1e1e24;
   border-radius: 8px;
   cursor: pointer;
-  transition: border-color 0.2s, filter 0.2s;
+  transition:
+    border-color 0.2s,
+    filter 0.2s;
 }
 
 .card:hover {
@@ -218,7 +249,6 @@ input[name="team"] + .team-card:hover {
   letter-spacing: 1px;
   color: #ffffff;
 }
-
 
 .epic-card {
   display: flex;
