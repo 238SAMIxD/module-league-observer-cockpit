@@ -1,7 +1,7 @@
 {
   "name": "module-league-observer-cockpit",
   "version": "1.0.0",
-  "description": "Module that provides dashboard to manually trigger in game events for observers",
+  "description": "Module that provides a dashboard to manually trigger in-game events for observers",
   "author": "238SAMIxD",
   "license": "MIT",
   "toolkit": {
