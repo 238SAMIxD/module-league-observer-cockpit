@@ -27,10 +27,10 @@ LPTE.onready(async () => {
 
   const updateTeams = (blueTeam, redTeam) => {
     if (blueTeam && blueTeam.name) {
-      document.querySelector('.blue-team .label').innerText = `TARGET: ${blueTeam.name.toUpperCase()}`;
+      document.querySelector('.blue-team .label').innerText = `${blueTeam.name.toUpperCase()}`;
     }
     if (redTeam && redTeam.name) {
-      document.querySelector('.red-team .label').innerText = `TARGET: ${redTeam.name.toUpperCase()}`;
+      document.querySelector('.red-team .label').innerText = `${redTeam.name.toUpperCase()}`;
     }
   };
 
