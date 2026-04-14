@@ -1,83 +1,34 @@
-function showPlatings() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'show-platings',
-      version: 1
-    }
-  })
-}
-function hidePlatings() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'hide-platings',
-      version: 1
-    }
-  })
+document.addEventListener("keydown", (e) => {
+  if (
+    e.target.getAttribute("role") === "button" &&
+    (e.key === "Enter" || e.key === " ")
+  ) {
+    e.preventDefault();
+    e.target.click();
+  }
+});
+
+function getTeam() {
+  const selectedTeam = document.querySelector("[name=team]:checked");
+  return selectedTeam ? parseInt(selectedTeam.value, 10) : 100;
 }
 
-/* ----- */
+function triggerEvent(event, count = undefined) {
+  const team = getTeam();
 
-function mapZoomIn() {
-  LPTE.emit({
+  const payload = {
     meta: {
-      namespace: 'module-league-caster-cockpit',
-      type: 'MapZoomIn',
-      version: 1
-    }
-  })
-}
-function mapZoomOut() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-caster-cockpit',
-      type: 'MapZoomOut',
-      version: 1
-    }
-  })
-}
-
-/* ----- */
-
-function showLeaderBoard(leaderboard) {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'show-leader-board',
-      version: 1
+      namespace: "module-league-in-game",
+      type: "test-event",
+      version: 1,
     },
-    leaderboard
-  })
-}
-function hideLeaderBoard() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'hide-leader-board',
-      version: 1
-    }
-  })
-}
+    team,
+    event,
+  };
 
-/* ----- */
+  if (count !== undefined) {
+    payload.count = count;
+  }
 
-function showGoldGraph() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'show-gold-graph',
-      version: 1
-    }
-  })
-}
-
-function showGold() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-caster-cockpit',
-      type: 'show-gold',
-      version: 1
-    }
-  })
+  LPTE.emit(payload);
 }
