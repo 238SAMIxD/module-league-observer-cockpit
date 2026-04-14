@@ -4,19 +4,25 @@ LPTE.onready(async () => {
   const redTeamLabel = document.querySelector(".red-team .label");
 
   const updateTournament = (name) => {
-    onAirBadge.textContent =
-      name && name.trim() !== ""
-        ? `TOURNAMENT: ${name.toUpperCase()}`
-        : "TOURNAMENT: WAITING...";
+    if (onAirBadge) {
+      onAirBadge.textContent =
+        name && name.trim() !== ""
+          ? `TOURNAMENT: ${name.toUpperCase()}`
+          : "TOURNAMENT: WAITING...";
+    }
   };
 
   const updateTeams = (blueTeam, redTeam) => {
-    blueTeamLabel.textContent = blueTeam?.name?.trim()
-      ? blueTeam.name.toUpperCase()
-      : "BLUE TEAM";
-    redTeamLabel.textContent = redTeam?.name?.trim()
-      ? redTeam.name.toUpperCase()
-      : "RED TEAM";
+    if (blueTeamLabel) {
+      blueTeamLabel.textContent = blueTeam?.name?.trim()
+        ? blueTeam.name.toUpperCase()
+        : "BLUE TEAM";
+    }
+    if (redTeamLabel) {
+      redTeamLabel.textContent = redTeam?.name?.trim()
+        ? redTeam.name.toUpperCase()
+        : "RED TEAM";
+    }
   };
 
   const handleTeamsData = (data) => {
