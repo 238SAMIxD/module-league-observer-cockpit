@@ -1,91 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Observer Cockpit | League</title>
-    <script src="/static/main-bundle.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/bootstrap-dark.min.css"
-    />
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="cockpit.css" />
-    <link rel="stylesheet" href="/pages/op-plugin-theming/active/index.css" />
-  </head>
-  <body class="module-league-observer-cockpit">
-    <h1>League Observer Cockpit</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>League Observer Cockpit</title>
+  <script src="/static/main-bundle.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cockpit.css">
+  <link rel="stylesheet" href="/pages/op-plugin-theming/active/index.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="brand">LEAGUE OBSERVER COCKPIT</div>
+    </div>
+    <div class="nav-right">
+      <div class="status on-air">
+        TOURNAMENT: WAITING...
+      </div>
+    </div>
+  </header>
 
-    <div class="events">
-      <div class="teams">
-        <h3>Team</h3>
-        <div class="picker">
-          <input id="blue" name="team" type="radio" value="100" checked>
-          <input id="red" name="team" type="radio" value="200">
-          <label for="blue" class="btn btn-secondary order">Blue</label>
-          <label for="red" class="btn btn-secondary chaos">Red</label>
+  <section class="team-targeting">
+    <input id="blue" name="team" type="radio" value="100" checked hidden>
+    <label for="blue" class="team-card blue-team">
+      <div class="icon">⣏</div>
+      <div class="label">TARGET: BLUE TEAM</div>
+    </label>
+    
+    <input id="red" name="team" type="radio" value="200" hidden>
+    <label for="red" class="team-card red-team">
+      <div class="icon">⣏</div>
+      <div class="label">TARGET: REDTEAM</div>
+    </label>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="header-title gold">ELEMENTAL DRAGONS</h2>
+      <div class="header-line"></div>
+    </div>
+    <div class="grid grid-6">
+      <div class="card object-card" onclick="triggerEvent('Infernal')">
+        <img src="img/infernal.png" alt="Infernal">
+        <span class="card-label">INFERNAL</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Ocean')">
+        <img src="img/ocean.png" alt="Ocean">
+        <span class="card-label">OCEAN</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Mountain')">
+        <img src="img/mountain.png" alt="Mountain">
+        <span class="card-label">MOUNTAIN</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Cloud')">
+        <img src="img/cloud.png" alt="Cloud">
+        <span class="card-label">CLOUD</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Hextech')">
+        <img src="img/hextech.png" alt="Hextech">
+        <span class="card-label">HEXTECH</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Chemtech')">
+        <img src="img/chemtech.png" alt="Chemtech">
+        <span class="card-label">CHEMTECH</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="header-title purple">VOID CREATURES</h2>
+      <div class="header-line"></div>
+    </div>
+    <div class="grid grid-4">
+      <div class="card object-card" onclick="triggerEvent('Voidgrubs')">
+        <img src="img/voidgrubs.png" alt="Voidgrubs +1">
+        <span class="card-label">VOIDGRUBS +1</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Voidgrubs')">
+        <img src="img/voidgrubs.png" alt="Voidgrubs +2">
+        <span class="card-label">VOIDGRUBS +2</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Voidgrubs')">
+        <img src="img/voidgrubs.png" alt="Voidgrubs +3">
+        <span class="card-label">VOIDGRUBS +3</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('Herald')">
+        <img src="img/herald.png" alt="Rift Herald">
+        <span class="card-label">RIFT HERALD</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="header-title green">EPIC OBJECTIVES</h2>
+      <div class="header-line"></div>
+    </div>
+    <div class="grid grid-2">
+      <div class="card epic-card baron-card" onclick="triggerEvent('Baron')">
+        <div class="epic-left">
+          <img src="img/baron.png" alt="Baron">
+          <div class="epic-info">
+            <span class="epic-class class-green">EPIC CLASS</span>
+            <span class="epic-name">BARON NASHOR</span>
+          </div>
+        </div>
+        <div class="epic-right">
+          <span class="chevron">‚</span>
         </div>
       </div>
-      <h2>Events</h2>
-      <div class="events">
-        <h3>Dragons</h3>
-        <div class="dragons">
-          <div class="grid elemental">
-            <button class="infernal" onclick="triggerEvent('Infernal')">
-              <img src="img/infernal.png" alt="Infernal" />
-            <span class="title">Infernal</span>
-            </button>
-            <button class="ocean" onclick="triggerEvent('Ocean')">
-              <img src="img/ocean.png" alt="Ocean" />
-            <span class="title">Ocean</span>
-            </button>
-            <button class="mountain" onclick="triggerEvent('Mountain')">
-              <img src="img/mountain.png" alt="Mountain" />
-            <span class="title">Mountain</span>
-            </button>
-            <button class="cloud" onclick="triggerEvent('Cloud')">
-              <img src="img/cloud.png" alt="Cloud" />
-            <span class="title">Cloud</span>
-            </button>
-            <button class="hextech" onclick="triggerEvent('Hextech')">
-              <img src="img/hextech.png" alt="Hextech" />
-            <span class="title">Hextech</span>
-            </button>
-            <button class="chemtech" onclick="triggerEvent('Chemtech')">
-              <img src="img/chemtech.png" alt="Chemtech" />
-              <span class="title">Chemtech</span>
-            </button>
+      <div class="card epic-card elder-card" onclick="triggerEvent('Elder')">
+        <div class="epic-left">
+          <img src="img/elder.png" alt="Elder">
+          <div class="epic-info">
+            <span class="epic-class class-gold">EPIC CLASS</span>
+            <span class="epic-name">ELDER DRAGON</span>
           </div>
-          <button class="elder" onclick="triggerEvent('Elder')">
-            <img src="img/elder.png" alt="Elder" />
-            <span class="title">Elder</span>
-          </button>
         </div>
-        <h3>Void creatures</h3>
-        <div class="grid void">
-          <button class="voidgrubs" onclick="triggerEvent('Voidgrubs')">
-            <img src="img/voidgrubs.png" alt="Voidgrubs" />
-            <span class="title">Voidgrubs</span>
-          </button>
-          <button class="herald" onclick="triggerEvent('Herald')">
-            <img src="img/herald.png" alt="Herald" />
-            <span class="title">Herald</span>
-          </button>
-          <button class="atakhan" onclick="triggerEvent('Atakhan')">
-            <img src="img/atakhan.png" alt="Atakhan" />
-            <span class="title">Atakhan</span>
-          </button>
-          <button class="baron" onclick="triggerEvent('Baron')">
-            <img src="img/baron.png" alt="Baron" />
-            <span class="title">Baron</span>
-          </button>
+        <div class="epic-right">
+          <span class="chevron">‚</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <script src="cockpit.js"></script>
-    <script src="functions.js"></script>
-  </body>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="header-title val-blue">MILESTONE EVENTS</h2>
+      <div class="header-line"></div>
+    </div>
+    <div class="grid grid-4">
+      <div class="card object-card" onclick="triggerEvent('FirstBlood')">
+        <img src="img/firstblood.png" alt="First Blood">
+        <span class="card-label">FIRST BLOOD</span>
+      </div>
+      <div class="card object-card" onclick="triggerEvent('FirstTurret')">
+        <img src="img/firstturret.png" alt="First Turret">
+        <span class="card-label">FIRST TURRET</span>
+      </div>
+    </div>
+  </section>
+
+  <script src="cockpit.js"></script>
+  <script src="functions.js"></script>
+</body>
 </html>
